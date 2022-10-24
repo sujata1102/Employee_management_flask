@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>Manage Employee|Update Employee</title>
+        <link href="/static/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <h2>Update Employee Details</h2>
+        <form action='/update/{{d.0}}' method='POST'>
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td><input type='text' name='name' value="{{d.1}}" /></td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input type='email' name='email' value="{{d.2}}" /></td>
+                </tr>
+                <tr>
+                    <td>Phone:</td>
+                    <td><input type='tel' name='phone' maxlength="10" pattern="[0-9]{10}" value="{{d.3}}" /></td>
+                </tr>
+            </table>
+            <input type='submit' name='send' value="update" />
+        </form>
+    </body>
+</html>

@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>Manage Employee|Add Employees</title>
+        <link href="/static/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <h2>Add Employee</h2>
+        <form action='/store' method='POST'>
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td><input type='text' name='name'/></td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input type='email' name='email'/></td>
+                </tr>
+                <tr>
+                    <td>Phone:</td>
+                    <td><input type='tel' name='phone' maxlength="10" pattern="[0-9]{10}"/></td>
+                </tr>
+            </table>
+            <input type='submit' name='send'/>
+        </form>
+    </body>
+</html>
