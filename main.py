@@ -1,7 +1,8 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, flash
 import pymysql
 
-app = Flask('__name__')  # create object of Flask class
+app = Flask('__name__')
+app.secret_key = "Secret Key"
 
 
 @app.route('/')
@@ -35,10 +36,11 @@ def store():
         q = "insert into employee (name,email,phone) values('{}','{}','{}')".format(name, email, phone)
         cu.execute(q)
         db.commit()
-        return "Record inserted successfully"
+        flash("Record inserted successfully")
+        return redirect('/')
 
     except Exception as e:
-        return "Error: ", +e
+        return "Error: ", e
 
 
 @app.route('/delete/<rid>')
@@ -49,6 +51,7 @@ def delete(rid):
         q = f"delete from employee where id='{rid}'"
         cu.execute(q)
         db.commit()
+        flash("Record deleted successfully")
         return redirect('/')
 
     except Exception as e:
@@ -80,6 +83,7 @@ def update(rid):
         q = "update employee set name='{}', email='{}', phone='{}' where id='{}'".format(name, email, phone, rid)
         cu.execute(q)
         db.commit()
+        flash("Record updated successfully")
         return redirect('/')
 
     except Exception as e:
